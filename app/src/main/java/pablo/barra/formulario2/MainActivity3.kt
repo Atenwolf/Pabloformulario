@@ -1,29 +1,38 @@
 package pablo.barra.formulario2
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 
 class MainActivity3 : AppCompatActivity() {
-    private var btnGuardar: Button? = null
-    private var btnRegresar: Button? = null
-    private var tvDatos: TextView? = null
+    private lateinit var btnGuardar: Button
+    private lateinit var btnRegresar: Button
+    private lateinit var tvDatos: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main3) // Asegúrate de que el nombre del layout sea correcto (activity_main3.xml)
+        setContentView(R.layout.activity_main3)
 
         btnGuardar = findViewById(R.id.btnGuardar)
         btnRegresar = findViewById(R.id.btnRegresar)
         tvDatos = findViewById(R.id.tvDatos)
 
-        btnGuardar?.setOnClickListener(View.OnClickListener {
-        })
+        val persona = intent.getSerializableExtra("persona") as Persona
 
-        btnRegresar?.setOnClickListener(View.OnClickListener {
+        val datosStr = "Nombre: ${persona.nombre}\nApellido: ${persona.apellido}\nDirección: ${persona.direccion}\n" +
+                "Edad: ${persona.edad}\nCelular: ${persona.celular}\nFecha: ${persona.fecha}\nMi Campo Booleano: ${persona.activo}"
+        tvDatos.text = datosStr
+
+        btnGuardar.setOnClickListener {
+
+            Toast.makeText(this, "Datos guardados en la base de datos", Toast.LENGTH_SHORT).show()
+        }
+
+        btnRegresar.setOnClickListener {
             finish()
-        })
+        }
     }
 }
+

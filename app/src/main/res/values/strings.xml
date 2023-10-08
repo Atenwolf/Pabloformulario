@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">formulario2</string>
+    <string name="adelante">Adelante</string>
+    <string name="ir_a_la_segunda_actividad">Ir a la Segunda Actividad</string>
+</resources>
